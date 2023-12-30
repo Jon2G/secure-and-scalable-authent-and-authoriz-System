@@ -2,12 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 //Handlers from controllers
-const {login, signup, sendotp} = require("../controllers/auth")
+const {login, signup} = require("../controllers/auth")
 const {auth, isStudent, isAdmin} = require('../middlewares/authMiddle')
 
 router.post('/login', login)
 router.post('/signup', signup)
-router.post('/sendotp', sendotp)
 
 
 //testing protected route
