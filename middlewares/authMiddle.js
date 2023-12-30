@@ -7,7 +7,7 @@ require('dotenv').config()
 exports.auth = (req,res,next)=>{
     try {
         //extract JWT token
-        console.log({req})
+        console.log({body: req.body})
         const token = req?.body?.token || req?.cookies?.token
         if(!token){
             return res.status(401).json({
@@ -22,6 +22,7 @@ exports.auth = (req,res,next)=>{
             req.user = decode
             console.log(req.user)
         } catch (error) {
+            console.error(error)
             return res.status(401).json({
                 success:false,
                 message: "invalid Token ⚠️"
