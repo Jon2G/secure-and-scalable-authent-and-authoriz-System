@@ -25,7 +25,11 @@ exports.auth = (req,res,next)=>{
         //verify the token
         try {
             console.log({JWT_SECRET:process.env.JWT_SECRET})
-            const decode = jwt.verify(token, process.env.JWT_SECRET)
+            const decode = jwt.verify(token, process.env.JWT_SECRET,{
+                algorithm: "HS256",
+                ignoreExpiration: true,
+                ignoreNotBefore: true
+            })
             req.user = decode
             console.log(req.user)
         } catch (error) {
