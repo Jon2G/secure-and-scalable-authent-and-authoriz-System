@@ -15,9 +15,16 @@ exports.auth = (req,res,next)=>{
                 message: "Token Missing"
             })
         }
+        if(process.env.JWT_SECRET==undefined){
+            return res.status(401).json({
+                success: false,
+                message: "JWT_SECRET Missing"
+            })
+        }
 
         //verify the token
         try {
+            console.log({JWT_SECRET:process.env.JWT_SECRET})
             const decode = jwt.verify(token, process.env.JWT_SECRET)
             req.user = decode
             console.log(req.user)
