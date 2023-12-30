@@ -32,21 +32,21 @@ exports.signup = async(req, res)=> {
         }
 
         // Find the most recent OTP for the email
-		const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
-		console.log(response);
-		if (response.length === 0) {
-			// OTP not found for the email
-			return res.status(400).json({
-				success: false,
-				message: "The OTP is not valid",
-			});
-		} else if (otp !== response[0].otp) {
-			// Invalid OTP
-			return res.status(400).json({
-				success: false,
-				message: "The OTP is not valid",
-			});
-		}
+		// const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
+		// console.log(response);
+		// if (response.length === 0) {
+		// 	// OTP not found for the email
+		// 	return res.status(400).json({
+		// 		success: false,
+		// 		message: "The OTP is not valid",
+		// 	});
+		// } else if (otp !== response[0].otp) {
+		// 	// Invalid OTP
+		// 	return res.status(400).json({
+		// 		success: false,
+		// 		message: "The OTP is not valid",
+		// 	});
+		// }
 
         //secure password
         let hashedPassword
