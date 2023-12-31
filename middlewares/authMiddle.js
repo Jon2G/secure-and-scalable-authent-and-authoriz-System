@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const {decodeJwt} = require('./authMiddle')
 require('dotenv').config()
 
 //auth, isSTudent, isAdmin
