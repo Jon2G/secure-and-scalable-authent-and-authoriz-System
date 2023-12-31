@@ -1,4 +1,6 @@
 const ElGamal = require('elgamal').default;
+const {EncryptedValue} = require('elgamal')
+const { BigInteger } = require("jsbn");
 
 exports.generateKeys = async () => {
     console.log(ElGamal)
@@ -40,10 +42,11 @@ exports.decrypt = async (encrypted, keys) => {
         y,
         x } = keys
     const elgamal = new ElGamal(p, g, y, x);
-    console.log(encrypted)
-    const decrypted = await elgamal.decryptAsync({
-        a: BigInt(encrypted.a),
-        b: BigInt(encrypted.b)
-    });
+    
+    const value = new EncryptedValue(
+        new BigInteger(encrypted.a),
+        new BigInteger(encrypted.b),
+    )
+    const decrypted = await elgamal.decryptAsync(value);
     return decrypted;
 }
