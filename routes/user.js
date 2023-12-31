@@ -33,6 +33,7 @@ router.post('/admin', auth, isAdmin, (req,res)=>{
 })
 
 router.post('/encrypt', auth,isStudent, (req,res)=>{
+    console.log('encrypt')
     const {message} = req.body
     const user = decodeJwt(req.token)
     console.log(user)
@@ -44,6 +45,7 @@ router.post('/encrypt', auth,isStudent, (req,res)=>{
 })
 
 router.post('/decrypt', auth,isStudent, (req,res)=>{
+    console.log('decrypt')
     const {encrypted} = req.body
     const user = decodeJwt(req.token)
     console.log(user)
