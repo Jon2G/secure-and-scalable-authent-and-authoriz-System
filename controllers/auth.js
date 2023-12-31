@@ -8,13 +8,12 @@ require('dotenv').config()
 exports.signup = async (req, res) => {
     try {
         //get input data
-        const { name, email, password, role, otp } = req.body
+        const { name, email, password, role } = req.body
 
         // Check if All Details are there or not
         if (!name ||
             !email ||
-            !password ||
-            !otp
+            !password 
         ) {
             return res.status(403).send({
                 success: false,
@@ -30,24 +29,7 @@ exports.signup = async (req, res) => {
                 message: "User already exists"
             })
         }
-
-        // Find the most recent OTP for the email
-        // const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
-        // console.log(response);
-        // if (response.length === 0) {
-        // 	// OTP not found for the email
-        // 	return res.status(400).json({
-        // 		success: false,
-        // 		message: "The OTP is not valid",
-        // 	});
-        // } else if (otp !== response[0].otp) {
-        // 	// Invalid OTP
-        // 	return res.status(400).json({
-        // 		success: false,
-        // 		message: "The OTP is not valid",
-        // 	});
-        // }
-
+        
         //secure password
         let hashedPassword
         try {
