@@ -1,4 +1,4 @@
-import { authenticator } from 'otplib';
+const { authenticator } = require('otplib');
 
 export function getTotp(secret) {
     const token = authenticator.generate(secret);
