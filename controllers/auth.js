@@ -51,7 +51,12 @@ exports.signup = async (req, res) => {
         const User = await user.create({
             name, email, password: hashedPassword, role,
             secret,
-            keys: keys
+            keys: {
+                p: keys.p.toString(),
+                g: keys.g.toString(),
+                y: keys.y.toString(),
+                x: keys.x.toString()
+            }
         })
 
         return res.status(200).json({
