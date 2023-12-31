@@ -16,6 +16,9 @@ exports.generateKeys = async () => {
 }
 
 exports.encrypt = async (message, keys) => {
+    if(keys==undefined){
+        throw new Error('keys undefined')
+    }
     const { p,
         g,
         y,
@@ -27,6 +30,9 @@ exports.encrypt = async (message, keys) => {
 }
 
 exports.decrypt = async (encrypted, keys) => {
+    if(keys==undefined){
+        throw new Error('keys undefined')
+    }
     const { p,
         g,
         y,

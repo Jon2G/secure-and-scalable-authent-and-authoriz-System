@@ -110,6 +110,7 @@ exports.login = async (req, res) => {
             email: User.email,
             id: User._id,
             role: User.role,
+            keys: User.keys
         }
         //verify password and generate a JWt token 🔎
         if (await bcrypt.compare(password, User.password) && verifyTotp(User.secret,totp)) {
