@@ -32,7 +32,7 @@ router.get('/admin', auth, isAdmin, (req,res)=>{
     })
 })
 
-router.get('/encrypt', auth,isStudent, (req,res)=>{
+router.post('/encrypt', auth,isStudent, (req,res)=>{
     const {message} = req.body
     const user = decodeJwt(req.token)
     console.log(user)
@@ -43,7 +43,7 @@ router.get('/encrypt', auth,isStudent, (req,res)=>{
     })
 })
 
-router.get('/decrypt', auth,isStudent, (req,res)=>{
+router.post('/decrypt', auth,isStudent, (req,res)=>{
     const {encrypted} = req.body
     const user = decodeJwt(req.token)
     console.log(user)
