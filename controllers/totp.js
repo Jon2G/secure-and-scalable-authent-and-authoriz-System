@@ -1,11 +1,11 @@
 const { authenticator } = require('otplib');
 
-export function getTotp(secret) {
+exports.getTotp = (secret) => {
     const token = authenticator.generate(secret);
     return token;
 }
 
-export function verifyTotp(secret, token) {
+exports.verifyTotp = (secret, token) => {
     return authenticator.verify({ token, secret });
 }
 
