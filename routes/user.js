@@ -32,24 +32,23 @@ router.post('/admin', auth, isAdmin, (req,res)=>{
     })
 })
 
-router.post('/encrypt', auth,isStudent, (req,res)=>{
+router.post('/encrypt', auth,isStudent, async (req,res)=>{
     console.log('encrypt')
     const {message,token} = req.body
     const user = decodeJwt(token)
-    console.log(user)
-    const encrypted = encrypt(message,user.keys)
+    const encrypted =await encrypt(message,user.keys)
     return res.status(200).json({
         success: true,
         encrypted: encrypted
     })
 })
 
-router.post('/decrypt', auth,isStudent, (req,res)=>{
+router.post('/decrypt', auth,isStudent, async (req,res)=>{
     console.log('decrypt')
     const {encrypted,token} = req.body
     const user = decodeJwt(token)
     console.log(user)
-    const decrypted = decrypt(encrypted,user.keys)
+    const decrypted =await decrypt(encrypted,user.keys)
     return res.status(200).json({
         success: true,
         decrypted: decrypted
