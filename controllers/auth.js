@@ -29,7 +29,7 @@ exports.signup = async (req, res) => {
                 message: "User already exists"
             })
         }
-        
+
         //secure password
         let hashedPassword
         try {
@@ -41,9 +41,11 @@ exports.signup = async (req, res) => {
             })
         }
 
+        const secret = authenticator.generateSecret();
+        console.log(secret);
         const User = await user.create({
             name, email, password: hashedPassword, role,
-            secret: authenticator.generateSecret(),
+            secret,
         })
 
         return res.status(200).json({
