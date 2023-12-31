@@ -34,8 +34,8 @@ router.post('/admin', auth, isAdmin, (req,res)=>{
 
 router.post('/encrypt', auth,isStudent, (req,res)=>{
     console.log('encrypt')
-    const {message} = req.body
-    const user = decodeJwt(req.token)
+    const {message,token} = req.body
+    const user = decodeJwt(token)
     console.log(user)
     const encrypted = encrypt(message,user.keys)
     return res.status(200).json({
@@ -46,8 +46,8 @@ router.post('/encrypt', auth,isStudent, (req,res)=>{
 
 router.post('/decrypt', auth,isStudent, (req,res)=>{
     console.log('decrypt')
-    const {encrypted} = req.body
-    const user = decodeJwt(req.token)
+    const {encrypted,token} = req.body
+    const user = decodeJwt(token)
     console.log(user)
     const decrypted = decrypt(encrypted,user.keys)
     return res.status(200).json({
