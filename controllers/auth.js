@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const user = require("../models/user")
 const jwt = require('jsonwebtoken')
 const { authenticator } = require('otplib');
+const { getTotp, verifyTotp } = require('./totp');
 
 require('dotenv').config()
 //signup handle
