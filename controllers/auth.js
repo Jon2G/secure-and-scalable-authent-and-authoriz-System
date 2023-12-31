@@ -3,6 +3,7 @@ const user = require("../models/user")
 const jwt = require('jsonwebtoken')
 const { authenticator } = require('otplib');
 const { getTotp, verifyTotp } = require('./totp');
+const { generateKeys } = require('./../chiper/elgamal');
 
 require('dotenv').config()
 //signup handle
@@ -44,9 +45,13 @@ exports.signup = async (req, res) => {
 
         const secret = authenticator.generateSecret();
         console.log(secret);
+
+        const keys = generateKeys()
+        console.log(keys);
         const User = await user.create({
             name, email, password: hashedPassword, role,
             secret,
+            keys: keys
         })
 
         return res.status(200).json({
