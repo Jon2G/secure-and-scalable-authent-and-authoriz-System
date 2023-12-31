@@ -1,4 +1,4 @@
-process.env["MONGODB_URL"]='mongodb://tf_jslt_admin:689865541998@tf-jslt.cluster-c7aaqoyekc8g.us-east-1.docdb.amazonaws.com:27017/jslt?tls=false&tlsCAFile=./docdb-bastion.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
+process.env["MONGODB_URL"]='mongodb://tf_jslt_admin:689865541998@tf-jslt.cluster-c7aaqoyekc8g.us-east-1.docdb.amazonaws.com:27017/users_test?tls=false&tlsCAFile=./docdb-bastion.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false'
 process.env["JWT_SECRET"]='jslt'
 process.env["PORT"]=4000
 
