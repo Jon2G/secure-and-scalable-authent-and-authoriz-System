@@ -3,6 +3,14 @@ require('dotenv').config()
 
 //auth, isSTudent, isAdmin
 
+exports.decodeJwt = (token) => {
+    const decode = jwt.verify(token, process.env.JWT_SECRET,{
+        algorithm: "HS256",
+        ignoreExpiration: true,
+        ignoreNotBefore: true
+    })
+    return decode
+}
 
 exports.auth = (req,res,next)=>{
     try {
@@ -25,11 +33,7 @@ exports.auth = (req,res,next)=>{
         //verify the token
         try {
             console.log({JWT_SECRET:process.env.JWT_SECRET})
-            const decode = jwt.verify(token, process.env.JWT_SECRET,{
-                algorithm: "HS256",
-                ignoreExpiration: true,
-                ignoreNotBefore: true
-            })
+            const decode = decodeJwt(token)
             req.user = decode
             console.log(req.user)
         } catch (error) {
