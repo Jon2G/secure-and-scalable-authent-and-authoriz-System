@@ -46,7 +46,7 @@ exports.signup = async (req, res) => {
         const secret = authenticator.generateSecret();
         console.log(secret);
 
-        const keys = generateKeys()
+        const keys =await generateKeys()
         console.log(keys);
         const User = await user.create({
             name, email, password: hashedPassword, role,

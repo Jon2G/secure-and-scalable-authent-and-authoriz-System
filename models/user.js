@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     secret: {
         type: String,
         required : true
+    },
+    keys: {
+        type: Object,
+        required : true
     }
 })
 
