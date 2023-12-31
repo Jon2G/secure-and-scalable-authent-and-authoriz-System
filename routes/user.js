@@ -11,21 +11,21 @@ router.post('/totp', totp)
 
 
 //testing protected route
-router.get("/test",auth, (req,res)=>{
+router.post("/test",auth, (req,res)=>{
     res.json({
         success: true,
         message: "You are a valid Tester 👨‍💻"
     })
 })
 //protected routes
-router.get('/student', auth, isStudent, (req,res)=>{
+router.post('/student', auth, isStudent, (req,res)=>{
     res.json({
         success: true,
         message: "You are a valid Student 🧑‍🎓"
     })
 })
 
-router.get('/admin', auth, isAdmin, (req,res)=>{
+router.post('/admin', auth, isAdmin, (req,res)=>{
     res.json({
         success: true,
         message: "You are a valid Admin 😎"
