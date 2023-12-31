@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum : ['Admin', 'Student', 'Visitor']
+    },
+    secret: {
+        type: String,
+        required : true
     }
 })
 
