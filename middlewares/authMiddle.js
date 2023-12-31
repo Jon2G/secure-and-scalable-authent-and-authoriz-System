@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const {decodeJwt} = require('./authMiddle')
 require('dotenv').config()
 
 //auth, isSTudent, isAdmin
@@ -34,7 +33,7 @@ exports.auth = (req,res,next)=>{
         //verify the token
         try {
             console.log({JWT_SECRET:process.env.JWT_SECRET})
-            const decode = decodeJwt(token)
+            const decode =this.decodeJwt(token)
             req.user = decode
             console.log(req.user)
         } catch (error) {
