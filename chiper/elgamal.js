@@ -41,6 +41,9 @@ exports.decrypt = async (encrypted, keys) => {
         x } = keys
     const elgamal = new ElGamal(p, g, y, x);
     console.log(encrypted)
-    const decrypted = await elgamal.decryptAsync(encrypted);
+    const decrypted = await elgamal.decryptAsync({
+        a: BigInt(encrypted.a),
+        b: BigInt(encrypted.b)
+    });
     return decrypted;
 }

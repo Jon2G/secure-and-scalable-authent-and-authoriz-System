@@ -47,7 +47,6 @@ router.post('/decrypt', auth,isStudent, async (req,res)=>{
     console.log('decrypt')
     const {encrypted,token} = req.body
     const user = decodeJwt(token)
-    console.log(user)
     const decrypted =await decrypt(encrypted,user.keys)
     return res.status(200).json({
         success: true,
