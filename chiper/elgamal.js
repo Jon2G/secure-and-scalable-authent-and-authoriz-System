@@ -48,5 +48,5 @@ exports.decrypt = async (encrypted, keys) => {
         new BigInteger(encrypted.b),
     )
     const decrypted = await elgamal.decryptAsync(value);
-    return decrypted;
+    return decrypted.toString();
 }
