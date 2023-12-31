@@ -24,8 +24,9 @@ exports.encrypt = async (message, keys) => {
         y,
         x } = keys
     const elgamal = new ElGamal(p, g, y, x);
-    console.log(elgamal)
+    console.log(elgamal.encryptAsync)
     const encrypted = await elgamal.encryptAsync(message);
+    console.log(encrypted)
     return encrypted;
 }
 
@@ -38,7 +39,7 @@ exports.decrypt = async (encrypted, keys) => {
         y,
         x } = keys
     const elgamal = new ElGamal(p, g, y, x);
-    console.log(elgamal)
+    console.log(elgamal.decryptAsync)
     const decrypted = await elgamal.decryptAsync(encrypted);
     return decrypted;
 }
