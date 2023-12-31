@@ -16,11 +16,15 @@ exports.generateKeys = async () => {
 }
 
 exports.encrypt = async (message, keys) => {
-    const encrypted = await ElGamal.encryptAsync(message, keys);
+    const elgamal = new ElGamal(...{keys});
+    console.log(elgamal)
+    const encrypted = await elgamal.encryptAsync(message);
     return encrypted;
 }
 
 exports.decrypt = async (encrypted, keys) => {
-    const decrypted = await ElGamal.decryptAsync(encrypted, keys);
+    const elgamal = new ElGamal(...{keys});
+    console.log(elgamal)
+    const decrypted = await elgamal.decryptAsync(encrypted);
     return decrypted;
 }
